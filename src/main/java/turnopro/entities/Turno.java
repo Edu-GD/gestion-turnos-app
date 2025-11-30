@@ -12,11 +12,14 @@ public class Turno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 5)
-    private String registro;
+    @Column(name = "identificador", nullable = false, length = 5, unique = true)
+    private Integer identificadorProgresivo;
 
     @Column(nullable = false)
     private LocalDateTime fecha;
+
+    @Column(nullable = false)
+    private String descripcion;
 
     @Column(nullable = false)
     private EstadoTurno estadoTurno;
@@ -28,9 +31,10 @@ public class Turno {
     public Turno() {
     }
 
-    public Turno(String registro, LocalDateTime fecha, EstadoTurno estadoTurno, Ciudadano ciudadano) {
-        this.registro = registro;
+    public Turno(Integer identificadorProgresivo, LocalDateTime fecha, String descripcion, EstadoTurno estadoTurno, Ciudadano ciudadano) {
+        this.identificadorProgresivo = identificadorProgresivo;
         this.fecha = fecha;
+        this.descripcion = descripcion;
         this.estadoTurno = estadoTurno;
         this.ciudadano = ciudadano;
     }
@@ -39,12 +43,12 @@ public class Turno {
         return id;
     }
 
-    public String getRegistro() {
-        return registro;
+    public Integer getIdentificadorProgresivo() {
+        return identificadorProgresivo;
     }
 
-    public void setRegistro(String registro) {
-        this.registro = registro;
+    public void setIdentificadorProgresivo(Integer identificadorProgresivo) {
+        this.identificadorProgresivo = identificadorProgresivo;
     }
 
     public LocalDateTime getFecha() {
@@ -71,12 +75,21 @@ public class Turno {
         this.ciudadano = ciudadano;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     @Override
     public String toString() {
         return "Turno{" +
                 "id=" + id +
-                ", registro='" + registro + '\'' +
+                ", identificadorProgresivo=" + identificadorProgresivo +
                 ", fecha=" + fecha +
+                ", descripcion='" + descripcion + '\'' +
                 ", estadoTurno=" + estadoTurno +
                 ", ciudadano=" + ciudadano +
                 '}';
