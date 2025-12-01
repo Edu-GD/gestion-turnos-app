@@ -5,6 +5,7 @@ import jakarta.persistence.NoResultException;
 import turnopro.entities.EstadoTurno;
 import turnopro.entities.Turno;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class TurnoJPA {
@@ -42,11 +43,11 @@ public class TurnoJPA {
         }
     }
 
-    public Integer obtenerMaximoIdentificadorProgresivo() {
+    public Long obtenerMaximoIdentificadorProgresivo() {
         EntityManager em = JpaUtil.getEM();
-        Integer maxId = null;
+        Long maxId = null;
         try {
-            maxId = em.createQuery("SELECT MAX(t.identificadorProgresivo) FROM Turno t", Integer.class).getSingleResult();
+            maxId = em.createQuery("SELECT MAX(t.identificadorProgresivo) FROM Turno t", Long.class).getSingleResult();
         }catch (NoResultException e){
             maxId = null;
         }catch (Exception e){
@@ -56,5 +57,16 @@ public class TurnoJPA {
             em.close();
         }
         return maxId;
+    }
+    public List<Turno> filtrarPorFecha(LocalDateTime fecha){
+        return listarTurnos().stream()
+                .filter(t -> t.getFecha().equals(fecha))
+                .toList();
+    }
+
+    public List<Turno> filtrarPorEstado(EstadoTurno estadoTurno){
+        return  listarTurnos().stream()
+                .filter(t -> t.getEstadoTurno() == estadoTurno)
+                .toList();
     }
 }

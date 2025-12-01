@@ -13,7 +13,7 @@ public class Turno {
     private Long id;
 
     @Column(name = "identificador", nullable = false, length = 5, unique = true)
-    private Integer identificadorProgresivo;
+    private Long identificadorProgresivo;
 
     @Column(nullable = false)
     private LocalDateTime fecha;
@@ -31,7 +31,7 @@ public class Turno {
     public Turno() {
     }
 
-    public Turno(Integer identificadorProgresivo, LocalDateTime fecha, String descripcion, EstadoTurno estadoTurno, Ciudadano ciudadano) {
+    public Turno(Long identificadorProgresivo, LocalDateTime fecha, String descripcion, EstadoTurno estadoTurno, Ciudadano ciudadano) {
         this.identificadorProgresivo = identificadorProgresivo;
         this.fecha = fecha;
         this.descripcion = descripcion;
@@ -43,11 +43,11 @@ public class Turno {
         return id;
     }
 
-    public Integer getIdentificadorProgresivo() {
+    public Long getIdentificadorProgresivo() {
         return identificadorProgresivo;
     }
 
-    public void setIdentificadorProgresivo(Integer identificadorProgresivo) {
+    public void setIdentificadorProgresivo(Long identificadorProgresivo) {
         this.identificadorProgresivo = identificadorProgresivo;
     }
 

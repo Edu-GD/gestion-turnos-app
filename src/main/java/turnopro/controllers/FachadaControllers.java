@@ -32,7 +32,7 @@ public class FachadaControllers {
         turnoJPA.actualizarEstadoTurno(id, nuevoEstado);
     }
 
-    public Integer obtenerMaximoIdentificadorProgresivo() {
+    public Long obtenerMaximoIdentificadorProgresivo() {
         return turnoJPA.obtenerMaximoIdentificadorProgresivo();
     }
 }
