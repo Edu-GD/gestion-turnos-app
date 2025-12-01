@@ -6,6 +6,7 @@ import turnopro.entities.Turno;
 import turnopro.persistence.CiudadanoJPA;
 import turnopro.persistence.TurnoJPA;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class FachadaControllers {
@@ -28,11 +29,20 @@ public class FachadaControllers {
     public List<Turno> listarTurnos() {
         return turnoJPA.listarTurnos();
     }
-    public void actualizarEstadoTurno(long id, EstadoTurno nuevoEstado){
-        turnoJPA.actualizarEstadoTurno(id, nuevoEstado);
-    }
 
     public Long obtenerMaximoIdentificadorProgresivo() {
         return turnoJPA.obtenerMaximoIdentificadorProgresivo();
+    }
+
+    public void actualizarEstadoTurno(Long id){
+        turnoJPA.actualizarEstadoTurno(id, EstadoTurno.YA_ATENDIDO);
+    }
+
+    public List<Turno> filtrarPorFecha(LocalDateTime fecha) {
+        return turnoJPA.filtrarPorFecha(fecha);
+    }
+
+    public List<Turno> filtrarPorEstado(EstadoTurno estadoTurno) {
+        return turnoJPA.filtrarPorEstado(estadoTurno);
     }
 }
