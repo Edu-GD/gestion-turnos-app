@@ -45,7 +45,7 @@ public class TurnoJPA {
 
     public Long obtenerMaximoIdentificadorProgresivo() {
         EntityManager em = JpaUtil.getEM();
-        Long maxId = null;
+        Long maxId;
         try {
             maxId = em.createQuery("SELECT MAX(t.identificadorProgresivo) FROM Turno t", Long.class).getSingleResult();
         }catch (NoResultException e){
