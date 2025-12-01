@@ -1,6 +1,7 @@
 package turnopro.persistence;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import turnopro.entities.EstadoTurno;
 import turnopro.entities.Turno;
 
@@ -39,5 +40,21 @@ public class TurnoJPA {
         }finally {
             em.close();
         }
+    }
+
+    public Integer obtenerMaximoIdentificadorProgresivo() {
+        EntityManager em = JpaUtil.getEM();
+        Integer maxId = null;
+        try {
+            maxId = em.createQuery("SELECT MAX(t.identificadorProgresivo) FROM Turno t", Integer.class).getSingleResult();
+        }catch (NoResultException e){
+            maxId = null;
+        }catch (Exception e){
+            System.out.println("Error obteniendo máximo ID progresivo: " + e.getMessage());
+            maxId = null;
+        }finally {
+            em.close();
+        }
+        return maxId;
     }
 }
