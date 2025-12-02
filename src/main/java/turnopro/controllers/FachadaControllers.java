@@ -3,46 +3,61 @@ package turnopro.controllers;
 import turnopro.entities.Ciudadano;
 import turnopro.entities.EstadoTurno;
 import turnopro.entities.Turno;
+import turnopro.logic.TurnoService;
 import turnopro.persistence.CiudadanoJPA;
 import turnopro.persistence.TurnoJPA;
+import turnopro.logic.CiudadanoService;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class FachadaControllers {
 
-    private final CiudadanoJPA ciudadanoJPA = new CiudadanoJPA();
-    private final TurnoJPA turnoJPA = new TurnoJPA();
+    // 1. Instancias de los Servicios para delegar la lógica de negocio y persistencia
+    private final CiudadanoService ciudadanoService = new CiudadanoService();
+    private final TurnoService turnoService = new TurnoService();
+
+    // Operaciones de Ciudadano
 
     public void crearCiudadano(Ciudadano c){
-        ciudadanoJPA.crearCiudadano(c);
+        ciudadanoService.crearCiudadano(c);
     }
 
     public Ciudadano obtenerCiudadano(Long id){
-        return ciudadanoJPA.obtenerCiudadano(id);
+        return ciudadanoService.obtenerCiudadano(id);
+    }
+
+    // Operaciones de Turno
+
+    public void registrarNuevoTurno(LocalDateTime fechaHora, String descripcion, Long idCiudadano) {
+        turnoService.registrarNuevoTurno(fechaHora, descripcion, idCiudadano);
     }
 
     public void guardarTurno(Turno t){
-        turnoJPA.guardarTurno(t);
+        turnoService.guardarTurno(t);
     }
 
     public List<Turno> listarTurnos() {
-        return turnoJPA.listarTurnos();
+        return turnoService.listarTurnos();
     }
 
     public Long obtenerMaximoIdentificadorProgresivo() {
-        return turnoJPA.obtenerMaximoIdentificadorProgresivo();
+        return turnoService.obtenerMaximoIdentificadorProgresivo();
     }
 
     public void actualizarEstadoTurno(Long id){
-        turnoJPA.actualizarEstadoTurno(id, EstadoTurno.YA_ATENDIDO);
+        turnoService.actualizarEstadoTurno(id);
     }
 
     public List<Turno> filtrarPorFecha(LocalDateTime fecha) {
-        return turnoJPA.filtrarPorFecha(fecha);
+        return turnoService.filtrarPorFecha(fecha);
     }
 
     public List<Turno> filtrarPorEstado(EstadoTurno estadoTurno) {
-        return turnoJPA.filtrarPorEstado(estadoTurno);
+        return turnoService.filtrarPorEstado(estadoTurno);
+    }
+
+    public List<Ciudadano> listarCiudadanos() {
+        return ciudadanoService.listarCiudadanos();
     }
 }

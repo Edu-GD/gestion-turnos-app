@@ -18,8 +18,9 @@ public class TurnoJPA {
     }
 
     public List<Turno> listarTurnos(){
-        EntityManager em = JpaUtil.getEM();
-        return em.createQuery("SELECT t FROM Turno ORDER BY t.identificadorProgresivo ASC", Turno.class).getResultList();
+        try (EntityManager em = JpaUtil.getEM()){
+            return em.createQuery("SELECT t FROM Turno t JOIN FETCH t.ciudadano ORDER BY t.identificadorProgresivo ASC", Turno.class).getResultList();
+        }
     }
 
     public void actualizarEstadoTurno(long id, EstadoTurno nuevoEstado){
