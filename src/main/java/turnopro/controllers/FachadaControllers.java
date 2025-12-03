@@ -4,8 +4,6 @@ import turnopro.entities.Ciudadano;
 import turnopro.entities.EstadoTurno;
 import turnopro.entities.Turno;
 import turnopro.logic.TurnoService;
-import turnopro.persistence.CiudadanoJPA;
-import turnopro.persistence.TurnoJPA;
 import turnopro.logic.CiudadanoService;
 
 import java.time.LocalDateTime;
@@ -19,11 +17,11 @@ public class FachadaControllers {
 
     // Operaciones de Ciudadano
 
-    public void crearCiudadano(Ciudadano c){
+    public void crearCiudadano(Ciudadano c) {
         ciudadanoService.crearCiudadano(c);
     }
 
-    public Ciudadano obtenerCiudadano(Long id){
+    public Ciudadano obtenerCiudadano(Long id) {
         return ciudadanoService.obtenerCiudadano(id);
     }
 
@@ -33,7 +31,7 @@ public class FachadaControllers {
         turnoService.registrarNuevoTurno(fechaHora, descripcion, idCiudadano);
     }
 
-    public void guardarTurno(Turno t){
+    public void guardarTurno(Turno t) {
         turnoService.guardarTurno(t);
     }
 
@@ -45,7 +43,7 @@ public class FachadaControllers {
         return turnoService.obtenerMaximoIdentificadorProgresivo();
     }
 
-    public void actualizarEstadoTurno(Long id){
+    public void actualizarEstadoTurno(Long id) {
         turnoService.actualizarEstadoTurno(id);
     }
 

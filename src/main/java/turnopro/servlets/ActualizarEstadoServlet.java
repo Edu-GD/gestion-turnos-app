@@ -15,11 +15,11 @@ public class ActualizarEstadoServlet extends HttpServlet {
     private final FachadaControllers fachada = new FachadaControllers();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String idParam = req.getParameter("idTurno");
 
-        if (idParam == null || idParam.isEmpty()){
+        if (idParam == null || idParam.isEmpty()) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Se requiere el parámetro 'idTurno' para actualizar el estado.");
             return;
         }
@@ -32,9 +32,9 @@ public class ActualizarEstadoServlet extends HttpServlet {
 
             // Respuesta de éxito
             resp.sendRedirect("listarTurnos?exitoAtender=true");
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "El ID del turno debe ser un número válido.");
-        } catch (Exception e){
+        } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al actualizar es estado del turno: " + e.getMessage());
         }
 
