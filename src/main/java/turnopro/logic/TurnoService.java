@@ -39,7 +39,7 @@ public class TurnoService {
         turnoJPA.actualizarEstadoTurno(id, EstadoTurno.YA_ATENDIDO);
     }
 
-    // Metodos de consulta
+    // Métodos de consulta
     public List<Turno> listarTurnos() {
         return turnoJPA.listarTurnos();
     }

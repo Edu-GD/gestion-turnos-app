@@ -37,9 +37,11 @@ public class Ciudadano {
     @OneToMany(mappedBy = "ciudadano", cascade = CascadeType.ALL)
     private List<Turno> turnos;
 
+    // Constructor vacío requerido por JPA
     public Ciudadano() {
     }
 
+    // Constructor con datos
     public Ciudadano(String nombre, String apellidos, String dni, String telefono, String correoElectronico) {
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -48,6 +50,7 @@ public class Ciudadano {
         this.correoElectronico = correoElectronico;
     }
 
+    // Getters y setters
     public Long getId() {
         return id;
     }
@@ -100,6 +103,7 @@ public class Ciudadano {
         this.turnos = turnos;
     }
 
+    // Representación en texto
     @Override
     public String toString() {
         return "CIUDADANO: " +

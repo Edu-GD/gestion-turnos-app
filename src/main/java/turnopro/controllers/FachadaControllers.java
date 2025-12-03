@@ -16,7 +16,6 @@ public class FachadaControllers {
     private final TurnoService turnoService = new TurnoService();
 
     // Operaciones de Ciudadano
-
     public void crearCiudadano(Ciudadano c) {
         ciudadanoService.crearCiudadano(c);
     }
@@ -26,7 +25,6 @@ public class FachadaControllers {
     }
 
     // Operaciones de Turno
-
     public void registrarNuevoTurno(LocalDateTime fechaHora, String descripcion, Long idCiudadano) {
         turnoService.registrarNuevoTurno(fechaHora, descripcion, idCiudadano);
     }
