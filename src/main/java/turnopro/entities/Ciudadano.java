@@ -8,25 +8,32 @@ import java.util.List;
 @Table(name = "ciudadanos")
 public class Ciudadano {
 
+    // ID autogenerado
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Nombre obligatorio
     @Column(nullable = false, length = 25)
     private String nombre;
 
+    // Apellidos obligatorios
     @Column(nullable = false, length = 25)
     private String apellidos;
 
+    // DNI único
     @Column(unique = true, nullable = false)
     private String dni;
 
+    // Teléfono obligatorio
     @Column(nullable = false)
     private String telefono;
 
+    // Email obligatorio
     @Column(nullable = false)
     private String correoElectronico;
 
+    // Relación 1-N con Turno
     @OneToMany(mappedBy = "ciudadano", cascade = CascadeType.ALL)
     private List<Turno> turnos;
 
