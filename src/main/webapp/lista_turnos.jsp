@@ -65,62 +65,64 @@
 
     <%
     // Obtener la lista de turnos del request, enviada por el servlet
-    List<Turno> turnos = (List<Turno>) request.getAttribute("turnos");
-    if (turnos == null || turnos.isEmpty()) {
-    %>
-    <p class="alert alert-warning">No hay turnos registrados o no se encontraron resultados para el filtro.</p>
-    <%
-    } else {
-    %>
-    <div class="table-responsive">
-        <table class="table table-striped table-hover">
-            <thead>
-            <tr>
-                <th>ID T.</th>
-                <th>Fecha y Hora</th>
-                <th>Descripción</th>
-                <th>Estado</th>
-                <th>Ciudadano (ID/DNI)</th>
-                <th>Acciones</th>
-            </tr>
-            </thead>
-            <tbody>
-            <% for (Turno t : turnos) { %>
-            <tr>
-                <td><%= t.getIdentificadorProgresivo() %></td>
-                <td><%= t.getFecha() %></td>
-                <td><%= t.getDescripcion() %></td>
-                <td>
+    List
+    <Turno> turnos = (List
+        <Turno>) request.getAttribute("turnos");
+            if (turnos == null || turnos.isEmpty()) {
+            %>
+            <p class="alert alert-warning">No hay turnos registrados o no se encontraron resultados para el filtro.</p>
+            <%
+            } else {
+            %>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>ID T.</th>
+                        <th>Fecha y Hora</th>
+                        <th>Descripción</th>
+                        <th>Estado</th>
+                        <th>Ciudadano (ID/DNI)</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for (Turno t : turnos) { %>
+                    <tr>
+                        <td><%= t.getIdentificadorProgresivo() %></td>
+                        <td><%= t.getFecha() %></td>
+                        <td><%= t.getDescripcion() %></td>
+                        <td>
                                         <span class="badge
                                               <% if (t.getEstadoTurno() == EstadoTurno.EN_ESPERA) { %> bg-danger
                                               <% } else { %> bg-success <% } %>">
                                             <%= t.getEstadoTurno() %>
                                         </span>
-                </td>
-                <td>
-                    <%= t.getCiudadano().getId() %> / <%= t.getCiudadano().getDni() %>
-                </td>
-                <td>
-                    <% if (t.getEstadoTurno() == EstadoTurno.EN_ESPERA) { %>
-                    <form action="actualizarEstado" method="POST" style="display:inline;">
-                        <input type="hidden" name="idTurno" value="<%= t.getId() %>">
-                        <button type="submit" class="btn btn-sm btn-success"
-                                onclick="return confirm('¿Confirma que el turno ID <%= t.getIdentificadorProgresivo() %> ha sido atendido?');">
-                            Atender
-                        </button>
-                    </form>
-                    <% } else { %>
-                    <span class="text-muted">Atendido</span>
+                        </td>
+                        <td>
+                            <%= t.getCiudadano().getId() %> / <%= t.getCiudadano().getDni() %>
+                        </td>
+                        <td>
+                            <% if (t.getEstadoTurno() == EstadoTurno.EN_ESPERA) { %>
+                            <form action="actualizarEstado" method="POST" style="display:inline;">
+                                <input type="hidden" name="idTurno" value="<%= t.getId() %>">
+                                <button type="submit" class="btn btn-sm btn-success"
+                                        onclick="return confirm('¿Confirma que el turno ID <%= t.getIdentificadorProgresivo() %> ha sido atendido?');">
+                                    Atender
+                                </button>
+                            </form>
+                            <% } else { %>
+                            <span class="text-muted">Atendido</span>
+                            <% } %>
+                        </td>
+                    </tr>
                     <% } %>
-                </td>
-            </tr>
-            <% } %>
-            </tbody>
-        </table>
-    </div>
-    <%
-    }
-    %>
+                    </tbody>
+                </table>
+            </div>
+            <%
+            }
+            %>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

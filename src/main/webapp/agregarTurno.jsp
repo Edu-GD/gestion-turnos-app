@@ -36,17 +36,19 @@
 
                 <%
                 // 1. Obtener la lista de ciudadanos que adjuntó el doGet()
-                List<Ciudadano> ciudadanos = (List<Ciudadano>) request.getAttribute("ciudadanos");
-                if (ciudadanos != null) {
-                for (Ciudadano c : ciudadanos) {
-                %>
-                <option value="<%= c.getId() %>">
-                    <%= c.getNombre() %> <%= c.getApellidos() %> (DNI: <%= c.getDni() %>)
-                </option>
-                <%
-                }
-                }
-                %>
+                List
+                <Ciudadano> ciudadanos = (List
+                    <Ciudadano>) request.getAttribute("ciudadanos");
+                        if (ciudadanos != null) {
+                        for (Ciudadano c : ciudadanos) {
+                        %>
+                        <option value="<%= c.getId() %>">
+                            <%= c.getNombre() %> <%= c.getApellidos() %> (DNI: <%= c.getDni() %>)
+                        </option>
+                        <%
+                        }
+                        }
+                        %>
             </select>
         </div>
 

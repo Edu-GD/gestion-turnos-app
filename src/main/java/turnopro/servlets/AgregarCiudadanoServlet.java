@@ -16,7 +16,7 @@ public class AgregarCiudadanoServlet extends HttpServlet {
     private final FachadaControllers fachada = new FachadaControllers();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         // 1. Obtener los parámetros del formulario
         String nombre = req.getParameter("nombre");
@@ -26,7 +26,7 @@ public class AgregarCiudadanoServlet extends HttpServlet {
         String correo = req.getParameter("correoElectronico");
 
         // 2. Validación básica de datos
-        if (nombre == null || nombre.trim().isEmpty() || apellidos == null || apellidos.trim().isEmpty() || dni == null || dni.trim().isEmpty() || telefono == null || telefono.trim().isEmpty() || correo == null || correo.trim().isEmpty()){
+        if (nombre == null || nombre.trim().isEmpty() || apellidos == null || apellidos.trim().isEmpty() || dni == null || dni.trim().isEmpty() || telefono == null || telefono.trim().isEmpty() || correo == null || correo.trim().isEmpty()) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Faltan parámetros obligatorios.");
             return;
         }
@@ -39,20 +39,20 @@ public class AgregarCiudadanoServlet extends HttpServlet {
 
             // Redirección de éxito
             resp.sendRedirect("agregarCiudadano.jsp?exito=true");
-        } catch (RuntimeException e){
+        } catch (RuntimeException e) {
             // Captura la excepción lanzada desde CiudadanoJPA
             String errorMessage = e.getMessage();
 
-            if (errorMessage.contains("DNI duplicado")){
+            if (errorMessage.contains("DNI duplicado")) {
                 errorMessage = "El DNI proporcionado ya está registrado.";
-            } else if (errorMessage.contains("NOT NULL")){
+            } else if (errorMessage.contains("NOT NULL")) {
                 errorMessage = "Faltan campos obligatorios.";
             }
 
             // Redirección de error
             resp.sendRedirect("agregarCiudadano.jsp?error=" + errorMessage);
 
-        } catch (Exception e){
+        } catch (Exception e) {
             // Para otros errores no controlados
             resp.sendRedirect("agregarCiudadano.jsp?error=Error inesperado del servidor.");
         }

@@ -19,7 +19,7 @@ public class AgregarTurnoServlet extends HttpServlet {
     private final FachadaControllers fachada = new FachadaControllers();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         try {
             // 1. Obtener la lista de todos los ciudadanos registrados
@@ -30,20 +30,20 @@ public class AgregarTurnoServlet extends HttpServlet {
 
             // Usamos el RequestDispatcher para cargar el contenido JSP
             req.getRequestDispatcher("agregarTurno.jsp").forward(req, resp);
-        } catch (Exception e){
+        } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al cargar la lista de ciudadanos: " + e.getMessage());
         }
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         // 1. Obtener los párametros
         String fechaHoraParam = req.getParameter("fechaHora");
         String descripcion = req.getParameter("descripcion");
         String idCiudadanoParam = req.getParameter("idCiudadano");
 
-        if (fechaHoraParam == null || idCiudadanoParam == null || descripcion == null){
+        if (fechaHoraParam == null || idCiudadanoParam == null || descripcion == null) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Faltan parámetros obligatorios (fechaHora, descripcion, idCiudadano).");
             return;
         }
@@ -59,14 +59,14 @@ public class AgregarTurnoServlet extends HttpServlet {
 
             // Redirección de éxito: vuelve al formulario con un parámetro 'éxito'
             resp.sendRedirect("agregarTurno.jsp?exito=true");
-        } catch (DateTimeParseException e){
+        } catch (DateTimeParseException e) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Formato de fecha u hora incorrecto. Use YYYY-MM-DDTHH:MM.");
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "El ID del ciudadano debe ser un número válido.");
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             // Captura el error lanzado desde el servicio si el ciudadano no existe
             resp.sendError(HttpServletResponse.SC_NOT_FOUND, e.getMessage());
-        } catch (Exception e){
+        } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error inesperado al registrar el turno: " + e.getMessage());
         }
 

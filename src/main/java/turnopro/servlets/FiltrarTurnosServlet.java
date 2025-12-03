@@ -20,14 +20,14 @@ public class FiltrarTurnosServlet extends HttpServlet {
     private final FachadaControllers fachada = new FachadaControllers();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String fechaParam = req.getParameter("fecha");
         String estadoParam = req.getParameter("estado");
         List<Turno> turnos;
 
         try {
-            if (fechaParam != null && !fechaParam.isEmpty()){
+            if (fechaParam != null && !fechaParam.isEmpty()) {
                 // Filtrar por fecha
                 LocalDateTime fecha = LocalDateTime.parse(fechaParam);
                 turnos = fachada.filtrarPorFecha(fecha);
@@ -42,11 +42,11 @@ public class FiltrarTurnosServlet extends HttpServlet {
 
             req.setAttribute("turnos", turnos);
             req.getRequestDispatcher("lista_turnos.jsp").forward(req, resp);
-        } catch (DateTimeParseException e){
+        } catch (DateTimeParseException e) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Formato de fecha u hora incorrecto. Use YYYY-MM-DDTHH:MM.");
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "El estado proporcionado no es válido. Debe ser EN_ESPERA o YA_ATENDIDO.");
-        } catch (Exception e){
+        } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al procesar el filtro de turnos: " + e.getMessage());
         }
     }

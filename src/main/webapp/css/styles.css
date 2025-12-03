@@ -125,3 +125,17 @@ h1, h2 {
 .d-flex button {
     min-width: 120px;
 }
+
+/* --- Estilos para la imagen del logo --- */
+.logo-image {
+   /* Tamaño*/
+    width: 300px;
+    height: auto;
+    /* Borde del logo*/
+    border: 2px solid #1A5276;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Ubicación del logo: centrado en la página */
+    display: block;
+    margin: 0 auto;
+}

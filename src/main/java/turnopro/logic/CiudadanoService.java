@@ -16,7 +16,7 @@ public class CiudadanoService {
     }
 
     // Obtener ciudadano por su ID.
-    public Ciudadano obtenerCiudadano(Long id){
+    public Ciudadano obtenerCiudadano(Long id) {
         return ciudadanoJPA.obtenerCiudadano(id);
     }
 

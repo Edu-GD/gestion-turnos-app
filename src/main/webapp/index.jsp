@@ -8,6 +8,10 @@
 </head>
 <body>
 <div class="container mt-5">
+
+    <div class="text-center mb-4">
+        <img src="img/turnoprov2.png" alt="Logo del Sistema de Turnos" class="logo-image">
+    </div>
     <h1 class="mb-4">Bienvenido al Sistema de Gestión de Turnos</h1>
     <div class="list-group">
         <a href="agregarCiudadano.jsp" class="list-group-item list-group-item-action">

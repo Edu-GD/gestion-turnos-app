@@ -13,12 +13,12 @@ public class TurnoService {
     private final CiudadanoJPA ciudadanoJPA = new CiudadanoJPA();
     private final TurnoJPA turnoJPA = new TurnoJPA();
 
-    public void registrarNuevoTurno(LocalDateTime fecha, String descripcion, Long idCiudadano){
+    public void registrarNuevoTurno(LocalDateTime fecha, String descripcion, Long idCiudadano) {
 
         // 1. Obtener ciudadano (usando la persistencia)
         Ciudadano ciudadano = ciudadanoJPA.obtenerCiudadano(idCiudadano);
 
-        if (ciudadano == null){
+        if (ciudadano == null) {
             // Lanza una excepción que será capturada por el Servlet
             throw new IllegalArgumentException("Ciudadano con ID " + idCiudadano + " no encontrado.");
         }
@@ -35,7 +35,7 @@ public class TurnoService {
     }
 
     // Actualiza el estado del turno a YA_ATENDIDO
-    public void actualizarEstadoTurno(Long id){
+    public void actualizarEstadoTurno(Long id) {
         turnoJPA.actualizarEstadoTurno(id, EstadoTurno.YA_ATENDIDO);
     }
 
@@ -44,11 +44,11 @@ public class TurnoService {
         return turnoJPA.listarTurnos();
     }
 
-    public List<Turno> filtrarPorFecha(LocalDateTime fecha){
+    public List<Turno> filtrarPorFecha(LocalDateTime fecha) {
         return turnoJPA.filtrarPorFecha(fecha);
     }
 
-    public List<Turno> filtrarPorEstado(EstadoTurno estadoTurno){
+    public List<Turno> filtrarPorEstado(EstadoTurno estadoTurno) {
         return turnoJPA.filtrarPorEstado(estadoTurno);
     }
 
@@ -57,7 +57,7 @@ public class TurnoService {
     }
 
     // Permite a la fachada obtener el máximo ID progresivo
-    public Long obtenerMaximoIdentificadorProgresivo(){
+    public Long obtenerMaximoIdentificadorProgresivo() {
         return turnoJPA.obtenerMaximoIdentificadorProgresivo();
     }
 }

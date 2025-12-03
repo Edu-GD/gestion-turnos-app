@@ -17,7 +17,7 @@ public class ListarTurnosServlet extends HttpServlet {
     private final FachadaControllers fachada = new FachadaControllers();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         try {
             // 1. Obtenemos todos los turnos
@@ -28,7 +28,7 @@ public class ListarTurnosServlet extends HttpServlet {
 
             // 3. Redirigimos a lista_turnos.jsp
             req.getRequestDispatcher("lista_turnos.jsp").forward(req, resp);
-        } catch (Exception e){
+        } catch (Exception e) {
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al obtener la lista de turnos: " + e.getMessage());
         }
     }
