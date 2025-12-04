@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<html xmlns:jsp="http://www.w3.org/1999/XSL/Transform">
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Sistema de Gestión de Turnos</title>
@@ -8,7 +8,6 @@
 </head>
 <body>
 <div class="container mt-5">
-
     <div class="text-center mb-4">
         <img src="img/turnoprov2.png" alt="Logo del Sistema de Turnos" class="logo-image">
     </div>
@@ -18,8 +17,7 @@
             👤 Registrar Nuevo Ciudadano
         </a>
         <a href="listarCiudadanos" class="list-group-item list-group-item-action">
-            :busts_in_silhouette:
-            Gestión de Ciudadanos (CRUD)
+            👥 Gestión de Ciudadanos (CRUD)
         </a>
         <a href="agregarTurno" class="list-group-item list-group-item-action">
             🎟️ Solicitar Nuevo Turno
@@ -29,7 +27,6 @@
         </a>
     </div>
 </div>
-<jsp:include page="partials/footer.jsp"/>
 </body>
+<jsp:include page="partials/footer.jsp"/>
 </html>
-

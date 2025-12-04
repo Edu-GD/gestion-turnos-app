@@ -24,21 +24,26 @@ public class FachadaControllers {
         return ciudadanoService.obtenerCiudadano(id);
     }
 
+    public List<Ciudadano> listarCiudadanos() {
+        return ciudadanoService.listarCiudadanos();
+    }
+
+    public void modificarCiudadano(Ciudadano ciudadano) {
+        ciudadanoService.modificarCiudadano(ciudadano);
+
+    }
+
+    public void eliminarCiudadano(Long idCiudadano) {
+        ciudadanoService.eliminarCiudadano(idCiudadano);
+    }
+
     // Operaciones de Turno
     public void registrarNuevoTurno(LocalDateTime fechaHora, String descripcion, Long idCiudadano) {
         turnoService.registrarNuevoTurno(fechaHora, descripcion, idCiudadano);
     }
 
-    public void guardarTurno(Turno t) {
-        turnoService.guardarTurno(t);
-    }
-
     public List<Turno> listarTurnos() {
         return turnoService.listarTurnos();
-    }
-
-    public Long obtenerMaximoIdentificadorProgresivo() {
-        return turnoService.obtenerMaximoIdentificadorProgresivo();
     }
 
     public void actualizarEstadoTurno(Long id) {
@@ -51,18 +56,5 @@ public class FachadaControllers {
 
     public List<Turno> filtrarPorEstado(EstadoTurno estadoTurno) {
         return turnoService.filtrarPorEstado(estadoTurno);
-    }
-
-    public List<Ciudadano> listarCiudadanos() {
-        return ciudadanoService.listarCiudadanos();
-    }
-
-    public void modificarCiudadano(Ciudadano ciudadano) {
-        ciudadanoService.modificarCiudadano(ciudadano);
-
-    }
-
-    public void eliminarCiudadano(Long idCiudadano) {
-        ciudadanoService.eliminarCiudadano(idCiudadano);
     }
 }

@@ -51,13 +51,4 @@ public class TurnoService {
     public List<Turno> filtrarPorEstado(EstadoTurno estadoTurno) {
         return turnoJPA.filtrarPorEstado(estadoTurno);
     }
-
-    public void guardarTurno(Turno t) {
-        turnoJPA.guardarTurno(t);
-    }
-
-    // Permite a la fachada obtener el máximo ID progresivo
-    public Long obtenerMaximoIdentificadorProgresivo() {
-        return turnoJPA.obtenerMaximoIdentificadorProgresivo();
-    }
 }

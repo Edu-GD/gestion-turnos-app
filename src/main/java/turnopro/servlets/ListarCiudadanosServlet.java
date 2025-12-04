@@ -8,11 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import turnopro.controllers.FachadaControllers;
 import turnopro.entities.Ciudadano;
 
-import java.util.List;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "ListarCiudadanoServlet", urlPatterns = {"/listarCiudadano"})
-public class ListarCiudadanoServlet extends HttpServlet {
+@WebServlet(name = "ListarCiudadanoServlet", urlPatterns = {"/listarCiudadanos"})
+public class ListarCiudadanosServlet extends HttpServlet {
 
     private final FachadaControllers fachada = new FachadaControllers();
 
@@ -22,12 +22,10 @@ public class ListarCiudadanoServlet extends HttpServlet {
             List<Ciudadano> ciudadanos = fachada.listarCiudadanos();
             req.setAttribute("ciudadanos", ciudadanos);
 
+            // Reenvía a la nueva página JSP
             req.getRequestDispatcher("listarCiudadanos.jsp").forward(req, resp);
-        }catch (Exception e){
-            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al listar los ciudadanos");
+        } catch (Exception e) {
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al listar los ciudadanos.");
         }
     }
-
-
-
 }
