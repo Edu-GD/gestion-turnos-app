@@ -23,7 +23,7 @@ public class CiudadanoJPA {
     }
 
     /**
-     * Ontiene un ciudadano por su ID.
+     * Obtiene un ciudadano por su ID.
      * - No requiere transacción porque es una operación de lectura.
      * - em.find() devuelve el objeto si existe, o null si no se encuentra.
      */
