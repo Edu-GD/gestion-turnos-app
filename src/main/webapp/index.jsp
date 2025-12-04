@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 <html xmlns:jsp="http://www.w3.org/1999/XSL/Transform">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,6 +16,10 @@
     <div class="list-group">
         <a href="agregarCiudadano.jsp" class="list-group-item list-group-item-action">
             👤 Registrar Nuevo Ciudadano
+        </a>
+        <a href="listarCiudadanos" class="list-group-item list-group-item-action">
+            :busts_in_silhouette:
+            Gestión de Ciudadanos (CRUD)
         </a>
         <a href="agregarTurno" class="list-group-item list-group-item-action">
             🎟️ Solicitar Nuevo Turno

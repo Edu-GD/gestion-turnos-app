@@ -3,7 +3,6 @@
 <%@page import="turnopro.entities.Turno"%>
 <%@page import="turnopro.entities.EstadoTurno"%>
 
-<!DOCTYPE html>
 <html xmlns:jsp="http://www.w3.org/1999/XSL/Transform">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
