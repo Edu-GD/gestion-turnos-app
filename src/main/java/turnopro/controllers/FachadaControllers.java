@@ -56,4 +56,10 @@ public class FachadaControllers {
     public List<Ciudadano> listarCiudadanos() {
         return ciudadanoService.listarCiudadanos();
     }
+
+    public void modificarCiudadano(Ciudadano ciudadano) {
+    }
+
+    public void eliminarCiudadano(Long idCiudadano) {
+    }
 }
