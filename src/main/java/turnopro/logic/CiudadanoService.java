@@ -24,4 +24,13 @@ public class CiudadanoService {
     public List<Ciudadano> listarCiudadanos() {
         return ciudadanoJPA.listarCiudadanos();
     }
+
+    public void eliminarCiudadano(Long idCiudadano) {
+        ciudadanoJPA.eliminarCiudadano(idCiudadano);
+
+    }
+
+    public void modificarCiudadano(Ciudadano ciudadano) {
+        ciudadanoJPA.modificarCiudadano(ciudadano);
+    }
 }
