@@ -3,7 +3,7 @@
 <%@page import="turnopro.entities.Ciudadano"%>
 
 <!DOCTYPE html>
-<html>
+<html xmlns:jsp="http://www.w3.org/1999/XSL/Transform">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Solicitar Turno</title>
@@ -11,6 +11,7 @@
 </head>
 <body>
 <div class="container mt-5">
+    <jsp:include page="partials/logo_header.jsp"/>
     <h1 class="mb-4">Solicitar Nuevo Turno</h1>
     <a href="index.jsp" class="btn btn-secondary mb-3">← Volver al Menú</a>
 
@@ -65,5 +66,6 @@
         <button type="submit" class="btn btn-success">Solicitar Turno</button>
     </form>
 </div>
+<jsp:include page="partials/footer.jsp"/>
 </body>
 </html>

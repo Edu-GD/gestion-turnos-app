@@ -1,5 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,6 +7,7 @@
 </head>
 <body>
 <div class="container mt-5">
+    <jsp:include page="partials/logo_header.jsp"/>
     <h1 class="mb-4">Registrar Nuevo Ciudadano</h1>
     <%
     String exito = request.getParameter("exito");
@@ -52,5 +52,6 @@
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 </div>
+<jsp:include page="partials/footer.jsp"/>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <%@page import="turnopro.entities.EstadoTurno"%>
 
 <!DOCTYPE html>
-<html>
+<html xmlns:jsp="http://www.w3.org/1999/XSL/Transform">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Lista de Turnos</title>
@@ -12,6 +12,7 @@
 </head>
 <body>
 <div class="container-fluid mt-5">
+    <jsp:include page="partials/logo_header.jsp"/>
     <h1 class="mb-4">Gestión de Turnos</h1>
     <%-- Bloque para mensajes de éxito y error al Atender Turno --%>
     <%
@@ -126,4 +127,5 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<jsp:include page="partials/footer.jsp"/>
 </html>
