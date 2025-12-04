@@ -14,7 +14,7 @@
     if ("true".equals(exito)) {
     %>
     <div class="alert alert-success" role="alert">
-        ✅ ¡Registro exitoso! Puedes añadir otro ciudadano.
+        ¡Registro exitoso! Puedes añadir otro ciudadano.
     </div>
     <%
     }
@@ -52,6 +52,6 @@
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 </div>
-<jsp:include page="partials/footer.jsp"/>
 </body>
+<jsp:include page="partials/footer.jsp"/>
 </html>

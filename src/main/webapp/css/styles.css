@@ -20,39 +20,9 @@ h1, h2 {
     font-weight: 600;
 }
 
-/* --- Botones Personalizados --- */
-
-.btn-primary, .btn-success {
-    background-color: #1A5276;
-    border-color: #1A5276;
-    transition: background-color 0.2s, transform 0.1s;
-}
-
-.btn-primary:hover, .btn-success:hover{
-    background-color: #0e344e;
-    border-color: #0e344e;
-    transform: translateY(-1px);
-}
-
-/* --- Estilos para Botones Secundarios (Volver Atrás) --- */
-
-.btn-secondary {
-    background-color: #6c757d;
-    border-color: #6c757d;
-    color: #ffffff;
-    transition: background-color 0.2s, transform 0.1s;
-}
-
-.btn-secondary:hover {
-    background-color: #5a6268;
-    border-color: #545b62;
-    transform: translateY(-1px);
-}
-
 /* --- Contenedores y Formularios (Dar Profundidad) --- */
 
 .container > * {
-    background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -87,6 +57,35 @@ h1, h2 {
 .table tbody tr:hover {
     background-color: #e0e0e0;
     cursor: default;
+}
+
+/* --- Botones Personalizados --- */
+
+.btn-primary, .btn-success {
+    background-color: #1A5276;
+    border-color: #1A5276;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover, .btn-success:hover{
+    background-color: #0e344e;
+    border-color: #0e344e;
+    transform: translateY(-1px);
+}
+
+/* --- Estilos para Botones Secundarios (Volver Atrás) --- */
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #ffffff;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+    transform: translateY(-1px);
 }
 
 /* --- Mensajes y Alertas --- */
@@ -143,8 +142,6 @@ h1, h2 {
 
 /* --- logo_header --- */
 /* Esta regla define el logo pequeño y a la derecha (para el resto de .jsp) */
-.logo-wrapper {}
-
 .container, .container-fluid {
     position: relative;
 }

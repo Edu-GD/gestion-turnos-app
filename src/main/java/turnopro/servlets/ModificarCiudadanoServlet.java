@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import turnopro.controllers.FachadaControllers;
 import turnopro.entities.Ciudadano;
+import turnopro.logic.CiudadanoService;
 
 import java.io.IOException;
 
@@ -15,8 +16,9 @@ public class ModificarCiudadanoServlet extends HttpServlet {
 
     private final FachadaControllers fachada = new FachadaControllers();
 
+    // GET: Carga el ciudadano a editar y muestra el formulario
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = Long.parseLong(req.getParameter("id"));
         Ciudadano ciudadano = fachada.obtenerCiudadano(id);
 
@@ -24,8 +26,9 @@ public class ModificarCiudadanoServlet extends HttpServlet {
         req.getRequestDispatcher("modificarCiudadano.jsp").forward(req, resp);
     }
 
+    // POST: Recibe los datos modificados y guarda
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = Long.parseLong(req.getParameter("id"));
         String nombre = req.getParameter("nombre");
         String apellidos = req.getParameter("apellidos");
@@ -44,9 +47,8 @@ public class ModificarCiudadanoServlet extends HttpServlet {
             fachada.modificarCiudadano(ciudadano);
 
             resp.sendRedirect("listarCiudadanos?mensaje=exito_modificacion");
-        }else {
+        } else {
             resp.sendRedirect("listarCiudadanos=?error=ciudadano_no_encontrado");
         }
     }
-
 }

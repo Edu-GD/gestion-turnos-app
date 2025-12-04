@@ -44,4 +44,5 @@
     </form>
 </div>
 </body>
+<jsp:include page="partials/footer.jsp"/>
 </html>

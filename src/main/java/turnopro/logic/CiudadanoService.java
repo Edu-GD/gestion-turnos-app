@@ -25,11 +25,12 @@ public class CiudadanoService {
         return ciudadanoJPA.listarCiudadanos();
     }
 
+    // Eliminar un ciudadano de la BD
     public void eliminarCiudadano(Long idCiudadano) {
         ciudadanoJPA.eliminarCiudadano(idCiudadano);
-
     }
 
+    // Modificar un ciudadano ya registrado
     public void modificarCiudadano(Ciudadano ciudadano) {
         ciudadanoJPA.modificarCiudadano(ciudadano);
     }

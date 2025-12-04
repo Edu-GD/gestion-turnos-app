@@ -15,18 +15,19 @@ public class EliminarCiudadanoServlet extends HttpServlet {
     private final FachadaControllers fachada = new FachadaControllers();
 
     @Override
-    protected void doPost (HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             Long idCiudadano = Long.parseLong(req.getParameter("idCiudadano"));
 
             fachada.eliminarCiudadano(idCiudadano);
 
+            // Redirige a la lista con mensaje de éxito
             resp.sendRedirect("listarCiudadanos?mensaje=exito_eliminacion");
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             resp.sendRedirect("listarCiudadanos?error=ID_INVALIDO");
-        }catch (Exception e){
+        } catch (Exception e) {
+            // Manejar la posible restricción de clave foránea si el ciudadano tiene turnos
             resp.sendRedirect("listarCiudadanos?error=Error al eliminar (posiblemente tiene turnos asociados).");
         }
     }
-
 }

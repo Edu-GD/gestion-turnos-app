@@ -65,6 +65,6 @@
         <button type="submit" class="btn btn-success">Solicitar Turno</button>
     </form>
 </div>
-<jsp:include page="partials/footer.jsp"/>
 </body>
+<jsp:include page="partials/footer.jsp"/>
 </html>
