@@ -44,4 +44,32 @@ public class CiudadanoJPA {
             return em.createQuery("SELECT c FROM Ciudadano c ORDER BY c.nombre ASC", Ciudadano.class).getResultList();
         }
     }
+
+    public void eliminarCiudadano(Long idCiudadano) {
+        EntityManager em = JpaUtil.getEM();
+        try {
+            em.getTransaction().begin();
+            Ciudadano c = em.find(Ciudadano.class, idCiudadano);
+            if (c != null){
+                em.remove(c);
+            }
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+            throw new RuntimeException("Error al eliminar el ciudadano: " + e.getMessage());
+        }
+
+    }
+
+    public void modificarCiudadano(Ciudadano ciudadano) {
+        EntityManager em = JpaUtil.getEM();
+        try {
+            em.getTransaction().begin();
+            em.merge(ciudadano);
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+            throw new RuntimeException("Error al modificar el ciudadano: " + e.getMessage());
+        }
+    }
 }

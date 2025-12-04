@@ -58,8 +58,11 @@ public class FachadaControllers {
     }
 
     public void modificarCiudadano(Ciudadano ciudadano) {
+        ciudadanoService.modificarCiudadano(ciudadano);
+
     }
 
     public void eliminarCiudadano(Long idCiudadano) {
+        ciudadanoService.eliminarCiudadano(idCiudadano);
     }
 }
