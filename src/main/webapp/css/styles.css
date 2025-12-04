@@ -127,6 +127,7 @@ h1, h2 {
 }
 
 /* --- Estilos para la imagen del logo --- */
+/* Esta regla define el logo GRANDE y CENTRADO (para index.jsp) */
 .logo-image {
    /* Tamaño*/
     width: 300px;
@@ -138,4 +139,27 @@ h1, h2 {
     /* Ubicación del logo: centrado en la página */
     display: block;
     margin: 0 auto;
+}
+
+/* --- logo_header --- */
+/* Esta regla define el logo pequeño y a la derecha (para el resto de .jsp) */
+.logo-wrapper {}
+
+.container, .container-fluid {
+    position: relative;
+}
+
+.logo-wrapper.header-app-page {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.logo-wrapper.header-app-page .logo-image {
+    width: 250px;
+    margin: 0;
+}
+
+.container h1 {
+    margin-top: 60px !important;
 }
