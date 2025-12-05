@@ -16,12 +16,12 @@ import java.util.List;
 
 @WebServlet(name = "FiltrarTurnoServlet", urlPatterns = {"/filtrarTurnos"})
 public class FiltrarTurnosServlet extends HttpServlet {
-
+    // Fachada para acceder a la lógica de negocio relacionada con los turnos
     private final FachadaControllers fachada = new FachadaControllers();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        // Obtener parámetros opcionales para filtrar
         String fechaParam = req.getParameter("fecha");
         String estadoParam = req.getParameter("estado");
         List<Turno> turnos;

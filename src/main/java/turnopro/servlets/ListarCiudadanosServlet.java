@@ -13,12 +13,12 @@ import java.util.List;
 
 @WebServlet(name = "ListarCiudadanoServlet", urlPatterns = {"/listarCiudadanos"})
 public class ListarCiudadanosServlet extends HttpServlet {
-
+    // Fachada para acceder a la lógica de negocio relacionada con los ciudadanos
     private final FachadaControllers fachada = new FachadaControllers();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
+        try {// Obtener la lista completa de ciudadanos
             List<Ciudadano> ciudadanos = fachada.listarCiudadanos();
             req.setAttribute("ciudadanos", ciudadanos);
 
