@@ -18,7 +18,14 @@
     </div>
     <%
     }
-    // Puedes añadir lógica similar para los parámetros 'error'
+    String error = (String) request.getAttribute("error");
+    if (error != null) {
+    %>
+    <div class="alert alert-danger" role="alert">
+        🛑 **Error de Registro:** <%= error %>
+    </div>
+    <%
+    }
     %>
     <a href="index.jsp" class="btn btn-secondary mb-3">← Volver al Menú</a>
 
@@ -41,12 +48,12 @@
 
         <div class="mb-3">
             <label for="telefono" class="form-label">Teléfono:</label>
-            <input type="tel" class="form-control" id="telefono" name="telefono">
+            <input type="tel" class="form-control" id="telefono" name="telefono" required>
         </div>
 
         <div class="mb-3">
             <label for="correoElectronico" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="correoElectronico" name="correoElectronico">
+            <input type="email" class="form-control" id="correoElectronico" name="correoElectronico" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Registrar</button>

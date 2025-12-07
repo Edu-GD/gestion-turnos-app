@@ -1,5 +1,6 @@
 package turnopro.servlets;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -43,18 +44,28 @@ public class AgregarCiudadanoServlet extends HttpServlet {
             // Captura la excepción lanzada desde CiudadanoJPA
             String errorMessage = e.getMessage();
 
-            if (errorMessage.contains("DNI duplicado")) {
-                errorMessage = "El DNI proporcionado ya está registrado.";
-            } else if (errorMessage.contains("NOT NULL")) {
+            if (errorMessage != null && (errorMessage.contains("Duplicate entry") || errorMessage.contains("UKgy889yq80kmpwyljp7xxovqht"))) {
+                errorMessage = "El DNI proporcionado ya está registrado. Por favor, verifique el DNI e intente de nuevo.";
+            } else if (errorMessage != null && errorMessage.contains("NOT NULL")) {
                 errorMessage = "Faltan campos obligatorios.";
+            } else {
+                // Error inesperado o no manejado
+                System.err.println("Error no controlado al crear Ciudadano: " + errorMessage);
+                errorMessage = "Ocurrió un error inesperado al intentar registrar al ciudadano.";
             }
 
-            // Redirección de error
-            resp.sendRedirect("agregarCiudadano.jsp?error=" + errorMessage);
+            // Establecer el mensaje de error como atributo
+            req.setAttribute("error", errorMessage);
+
+            // Usar RequestDispatcher para re-enviar la solicitud al JSP
+            RequestDispatcher dispatcher = req.getRequestDispatcher("agregarCiudadano.jsp");
+            dispatcher.forward(req, resp);
 
         } catch (Exception e) {
             // Para otros errores no controlados
-            resp.sendRedirect("agregarCiudadano.jsp?error=Error inesperado del servidor.");
+            req.setAttribute("error", "Error inesperado del servidor.");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("agregarCiudadano.jsp");
+            dispatcher.forward(req, resp);
         }
     }
 
