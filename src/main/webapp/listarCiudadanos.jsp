@@ -21,11 +21,11 @@
 
     if("exito_eliminacion".equals(mensaje)) {
     %>
-    <div class="alert alert-success mt-3">Ciudadano modificado correctamente!</div>
+    <div class="alert alert-success mt-3">Ciudadano <strong>eliminado</strong> correctamente!</div>
     <%
     } else if ("exito_modificacion".equals(mensaje)) {
     %>
-    <div class="alert alert-success mt-3">Ciudadano modificado correctamente</div>
+    <div class="alert alert-success mt-3">Ciudadano <strong>modificado</strong> correctamente</div>
     <%
     }
     %>
