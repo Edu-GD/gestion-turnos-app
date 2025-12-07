@@ -14,7 +14,7 @@
     if ("true".equals(exito)) {
     %>
     <div class="alert alert-success" role="alert">
-        ¡Registro exitoso! Puedes añadir otro ciudadano.
+        <strong>¡Registro exitoso!</strong> Puedes añadir otro ciudadano.
     </div>
     <%
     }
@@ -22,7 +22,7 @@
     if (error != null) {
     %>
     <div class="alert alert-danger" role="alert">
-        🛑 **Error de Registro:** <%= error %>
+        🛑 <strong>Error de Registro:</strong> <%= error %>
     </div>
     <%
     }
