@@ -58,7 +58,6 @@ public class CiudadanoJPA {
             em.getTransaction().rollback();
             throw new RuntimeException("Error al eliminar el ciudadano: " + e.getMessage());
         }
-
     }
 
     public void modificarCiudadano(Ciudadano ciudadano) {

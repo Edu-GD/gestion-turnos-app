@@ -21,7 +21,7 @@
     if ("true".equals(exitoAtender)) {
     %>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        ✅ **¡Turno atendido!** El estado ha sido actualizado correctamente.
+        ✅ ¡Turno atendido! El estado ha sido actualizado correctamente.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <%

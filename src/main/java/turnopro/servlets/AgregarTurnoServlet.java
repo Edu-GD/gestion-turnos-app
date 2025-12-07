@@ -9,6 +9,8 @@ import turnopro.controllers.FachadaControllers;
 import turnopro.entities.Ciudadano;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -52,6 +54,15 @@ public class AgregarTurnoServlet extends HttpServlet {
             // 2. Convertir y validar datos
             LocalDateTime fechaHora = LocalDateTime.parse(fechaHoraParam);
             Long idCiudadano = Long.parseLong(idCiudadanoParam);
+
+            LocalDateTime ahora = LocalDateTime.now();
+
+            if (fechaHora.isBefore(ahora)) {
+                String mensajeError = "La fecha y hora seleccionada ya ha pasado, seleccione un horario correcto.";
+
+                resp.sendRedirect("agregarTurno?error=" + URLEncoder.encode(mensajeError, StandardCharsets.UTF_8.toString()));
+                return;
+            }
 
             // 3. LLamar a la fachada para ejecutar la lógica
             // Esta llamada se encarga de: buscar el ciudadano, generar el ID progresivo y guardar el Turno
