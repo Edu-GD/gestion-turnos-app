@@ -17,16 +17,25 @@
     <%-- Lógica para mostrar mensajes de éxito/error (del paso anterior) --%>
     <%
     String exito = request.getParameter("exito");
+    String error = request.getParameter("error"); // AÑADIDO: Obtener parámetro de error
+
     if ("true".equals(exito)) {
     %>
     <div class="alert alert-success" role="alert">
-        ¡Turno registrado con éxito!
+        ✅ ¡Turno registrado con éxito!
+    </div>
+    <%
+    } else if (error != null) {
+    // CORRECCIÓN SINTAXIS: Se asegura el cierre correcto del paréntesis y las etiquetas JSP/HTML
+    %>
+    <div class="alert alert-danger" role="alert">
+        ❌ Error: <%= java.net.URLDecoder.decode(error, java.nio.charset.StandardCharsets.UTF_8.toString()) %>
     </div>
     <%
     }
     %>
 
-    <form action="agregarTurno" method="POST">
+    <form action="agregarTurno" method="POST" onsubmit="return validarFecha()">
 
         <div class="mb-3">
             <label for="idCiudadano" class="form-label">Seleccionar Ciudadano:</label>
@@ -65,6 +74,27 @@
         <button type="submit" class="btn btn-success">Solicitar Turno</button>
     </form>
 </div>
+
+<script>
+    function validarFecha() {
+        const inputFecha = document.getElementById('fechaHora').value;
+
+        if (!inputFecha) {
+            return false;
+        }
+
+        const fechaSeleccionada = new Date(inputFecha);
+        const ahora = new Date();
+
+        // Si la fecha seleccionada es anterior al instante actual, muestra el pop-up
+        if (fechaSeleccionada < ahora) {
+            alert('❌ ERROR: No es posible crear un turno en una fecha anterior a la actual. Por favor, selecciona un horario correcto.');
+            return false;
+        }
+        return true;
+    }
+</script>
+
 </body>
 <jsp:include page="partials/footer.jsp"/>
 </html>
